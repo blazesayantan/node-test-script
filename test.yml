@@ -1,0 +1,88 @@
+- level1_name: Getting Started
+  link: /index.html
+- level1_name: Introduction
+  link: /introduction.html
+  subpages:
+    - level2_name: illuminator
+      link: /illuminator.html
+    - level2_name: eXponence
+      link: /exponence.html
+    - level2_name: ContexAlyze
+      link: /contexalyze.html
+    - level2_name: Quartic View
+      link: /quarticview.html
+    - level2_name: Administration & Utilities
+      link: /administration-utilities.html
+- level1_name: User Guide
+  link: /userguide.html
+  subpages:
+    - level2_name: Data Connectivity
+      link: /dataconnectivity.html
+      subpages:
+        - level3_name: Configure architecture
+          link: /configurearchitecture.html
+        - level3_name: Add datasources
+          link: /adddatasources.html
+        - level3_name: Add tags
+          link: /addtags.html
+        - level3_name: Install nodes
+          link: /installnodes.html
+        - level3_name: Troubleshoot
+          link: /troubleshoot.html
+    - level2_name: Data Contextualization
+      link: /datacontextualization.html
+      subpages:
+        - level3_name: Add metadata
+          link: /addmetadata.html
+        - level3_name: Add assets
+          link: /addassets.html
+        - level3_name: Add rules and soft-tags
+          link: /addrules.html
+        - level3_name: Add context-frames
+          link: /addcontextframes.html
+        - level3_name: Add products and recipes
+          link: /addproducts.html
+    - level2_name: Data Exploration
+      link: /dataexploration.html
+      subpages:
+        - level3_name: Trend tags
+          link: /trendtags.html
+        - level3_name: Overlay trends with reference profiles
+          link: /overlaytrends.html
+        - level3_name: Train and deploy ML models
+          link: /trainanddeploymlmodels.html
+        - level3_name: Manage ML models
+          link: /managemodels.html
+        - level3_name: Analyze assets in Reliability
+          link: /analyzeassets.html
+        - level3_name: Build custom dashboards
+          link: /buildcustomdashboards.html
+        - level3_name: Create quality records in TWD
+          link: /createqualityrecords.html
+        - level3_name: Add datasets for Power BI
+          link: /adddatasets.html
+        - level3_name: Export data
+          link: /exportdata.html
+    - level2_name: Administration
+      link: /administration.html
+      subpages:
+        - level3_name: Add users
+          link: /addusers.html
+        - level3_name: Configure OAuth. and SAML
+          link: /configureoauthandsaml.html
+        - level3_name: Configure SMTP
+          link: /configuresmtp.html
+        - level3_name: Backup data
+          link: /backupdata.html
+        - level3_name: Update Platform version
+          link: /updateplatform.html
+- level1_name: Quartic APIs and SDK
+  link: /quarticapis.html
+- level1_name: Support
+  link: /support.html
+- level1_name: Glossary
+  link: /glossary.html
+- level1_name: Release notes
+  link: /releasenotes.html
+- level1_name: Copyright
+  link: /copyright.html
