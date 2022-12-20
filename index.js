@@ -25,29 +25,10 @@ try {
   convertToJson(doc, length);
   console.log(ansObj, "answer object");
   var folderName = path.join(__dirname, "html");
-  fs.readdir(folderName, function (err, files) {
-    files
-      .filter(function (file) {
-        return file.substr(-5) === ".html";
-      })
-      .forEach(function (file) {
-        let htmlFile = path.join(__dirname, `html/${file}`);
-        fs.readFile(htmlFile, function (err, data) {
-          inspectFile(data, file);
-        });
-      });
+  readFile(folderName, ansObj).then(function (results) {
+    console.log(results, "results");
+    return writeFile(results);
   });
-  let writeFile = path.join(__dirname);
-  var jsonFile = JSON.stringify(ansObj);
-  let jsonParse = JSON.parse(jsonFile);
-  fs.writeFile(
-    `${writeFile}/search.json`,
-    JSON.stringify(jsonParse),
-    function (err) {
-      if (err) throw err;
-      console.log("complete");
-    }
-  );
 } catch (e) {
   console.log(e);
 }
@@ -70,5 +51,65 @@ function inspectFile(data, file) {
       });
   });
   isComplete = true;
-  console.log(ansObj, "ansobj");
+  console.log(ansObj, "ansobj from inspect");
+  return ansObj;
+}
+
+async function readFileAsyncWay(htmlFile, file) {
+  return new Promise(function (resolve, reject) {
+    fs.readFile(htmlFile, function (err, data) {
+      inspectFile(data, file);
+      if (err) reject(err);
+      else resolve(ansObj);
+    });
+  });
+}
+
+async function readFiles(files) {
+  return new Promise(async function (resolve, reject) {
+    const ans = await files
+      .filter(function (file) {
+        return file.substr(-5) === ".html";
+      })
+      .map(async (file) => {
+        let htmlFile = path.join(__dirname, `html/${file}`);
+        readFileAsyncWay(htmlFile, file).then((re) => {
+          console.log(re, "re");
+          return re;
+        });
+      });
+    if(ans) resolve(ans);
+  });
+}
+
+async function readFile(folderName, ansObj) {
+  return new Promise(function (resolve, reject) {
+    fs.readdir(folderName, async function (err, files) {
+      const ans = await readFiles(files)
+      console.log(ans, "answer")
+      if (err) {
+        reject(err);
+      } else {
+        resolve(ans);
+        console.log(ansObj, "ansobj from readfile");
+      }
+    });
+  });
+}
+
+async function writeFile(results) {
+  return new Promise(function (resolve, reject) {
+    console.log(ansObj, "ansobj from write");
+    let writeFile = path.join(__dirname);
+    var jsonFile = JSON.stringify(results);
+    let jsonParse = JSON.parse(jsonFile);
+    fs.writeFile(
+      `${writeFile}/search.json`,
+      JSON.stringify(jsonParse),
+      function (err) {
+        if (err) throw err;
+        console.log("complete");
+      }
+    );
+  });
 }
